@@ -22,7 +22,7 @@ cp ./static/extra.js docs/_static/js/extra.js
 
 mkdocs build -v
 
-find ./site -type f -name '*.html' -exec node --max_old_space_size=512 ./scripts/render_math.js {} \;
+find ./site -type f -name '*.html' -exec node -r esm --max_old_space_size=512 ./scripts/render_math.js --fontCache none {} > {} \;
 
 # npx gulp minify
 # try to avoid netlify timeout
